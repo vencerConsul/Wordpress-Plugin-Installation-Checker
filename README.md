@@ -7,8 +7,7 @@
 
 ## Installation (Via GitHub)
 
-## Google Docs Documentation
-[link](https://docs.google.com/document/d/1Z6hmV1L10LqFzGa_p34wCYY9HT3pumh1eH-TX2OtUlM/edit).
+## Google Docs Documentation [Google Docs](https://docs.google.com/document/d/1Z6hmV1L10LqFzGa_p34wCYY9HT3pumh1eH-TX2OtUlM/edit).
 
 1. Download the "WordPress Plugin Installation Checker" from this [link](https://github.com/vencerConsul/Wordpress-Plugin-Installation-Checker).
 2. Click on the "Code" button and select "Download ZIP".
