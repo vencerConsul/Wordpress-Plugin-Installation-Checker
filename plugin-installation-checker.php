@@ -12,12 +12,15 @@ if (!defined('ABSPATH')) {
 
 function display_installed_plugins() {
     $plugins = get_plugins();
+    $active_plugins = get_option('active_plugins');
+    $inactive_plugins = array_diff_key($plugins, array_flip($active_plugins));
 
-    if (count($plugins) > 0) {
-        echo '<h2>Installed Plugins:</h2>';
+    if (count($active_plugins) > 0) {
+        echo '<h2>Activated Plugins:</h2>';
         echo '<ul>';
 
-        foreach ($plugins as $plugin_path => $plugin_info) {
+        foreach ($active_plugins as $plugin_path) {
+            $plugin_info = $plugins[$plugin_path];
             $plugin_file = WP_PLUGIN_DIR . '/' . $plugin_path;
             $install_date = date('F j, Y', filemtime($plugin_file));
             echo '<li>' . $plugin_info['Name'] . ' (Installed on ' . $install_date . ')</li>';
@@ -25,7 +28,22 @@ function display_installed_plugins() {
 
         echo '</ul>';
     } else {
-        echo 'No plugins are currently installed.';
+        echo '<p>No activated plugins currently.</p>';
+    }
+
+    if (count($inactive_plugins) > 0) {
+        echo '<h2>Deactivated Plugins:</h2>';
+        echo '<ul>';
+
+        foreach ($inactive_plugins as $plugin_path => $plugin_info) {
+            $plugin_file = WP_PLUGIN_DIR . '/' . $plugin_path;
+            $install_date = date('F j, Y', filemtime($plugin_file));
+            echo '<li>' . $plugin_info['Name'] . ' (Installed on ' . $install_date . ')</li>';
+        }
+
+        echo '</ul>';
+    } else {
+        echo '<p>No deactivated plugins currently.</p>';
     }
 }
 
